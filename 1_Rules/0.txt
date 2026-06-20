@@ -1,0 +1,33 @@
+1. How to start reading docs and build & for basic definition how to stop asking LLM, instead find alternative(Community based platforms)?
+   - for starters ask google for concise definition
+   - later watch a youtube video(If not available ask relatives/discord/Whatsapp)
+   - Finally read docs & based on understanding make custom docs.
+2. How do I get the idea for which stack to choose & Based on the stack how to make the entire architecture diagram?
+   - By making projects
+   - for architecture diagram, understand what a client server architecture(Web2[Dynamic]/web1[Static]) is?
+     for instance, client(UI gets Primary data with metadatas by making a HTTP request) --> Server(Business Logic) --> Database.
+     1. If the entire this entire architecture is on a single machine(Single layer) its 1-Tier architecture. 
+        Also if any application is more than 3-Tier it comes under n-tier architecture.
+   - Something that opposes concept of Client server architecture is peer to peer architecture(p2p)(Web3)
+     for instance, p2p architecture is base for block chain technology.
+     1. p2p architecture is network of computers(nodes), these communicate without the need of a central server(Unlike Client server architecture)
+     2. Decentralised, so if one of the server goes down that doesnt effect the client(But in Client server if central server is down, Pray to god!)
+   - Now, here comes monolithic, microservice or serverless architectures
+     1. Monolithic, Every single service(module) packed in a single server. Its simple to build & deploy but,
+       Its not scalable, reliable as a single line of code(resulting into crash of entire application) could need re-deploying.
+     2. Well answers to the Prayers is microservice architecture, here every single module lives in seperate server and not centrally deployed.
+       Its scalable as each service would have different amount of traffic.
+     3. Lastly, serverless(serverless computing or function as a services[FAAS]) architecture. here the serverless(AWS lambda) microservice breakdown each microservice
+       into its own event driven functions.
+       Serverless doesnt mean no server. Instead the developer doesnt require to maintain the server(Himself).
+3. How do I design the entire Folder structure?
+   - By making projects
+4. What are the GitHub standards like License, README, Contributors.md, Code of Conduct, Citations & Changelog.
+   - Licenses
+    MIT(Do anything), Apache 2.0(Patented) & GPL(Copylefted)
+   - README.md
+    A file which renders on the frontpage with info like, what? why? how?
+   - Citations
+    When a the project is research based.
+   - Changelog
+    A file that shows changes made.

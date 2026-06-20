@@ -1,0 +1,81 @@
+What is Package Provider?(Powershell is also a packages provider) 
+    Package providers are engine or plugin that connects to a specific registry(database/library to store all the packages/modules).
+    There are tools(Package manager) which automates installing, updating or configuring libraries(packages) for a software project.
+    for instance, npm is a package provider which provides a tool to manage(npm(Exceptional case as the Provider and Manager names are same) etc).
+    https://www.youtube.com/watch?v=oGO_-DWTmKA&t=29s
+What are different Node Module system?
+    1.CommonJS/VanillJS/PlainJS(Default in Node unless you config)
+        // math.js
+        module.exports.add = (a, b) => a + b;
+
+        // app.js
+        const math = require('./math.js');
+        console.log(math.add(2, 3)); // 5
+    2. ES Modules(enabaled using .mjs extension or configuring)
+        // math.mjs
+        export function add(a, b) { return a + b; }
+
+        // app.mjs
+        import { add } from './math.mjs';
+        console.log(add(2, 3)); // 5
+Nodes Built-in Core Modules(These don't need npm(package.json) or any other package provider)
+    1.fs (file system)
+    2.http (server creation)
+    3.path (file paths)
+    4.crypto (encryption)
+npm provides a ecosystem for package management & other things.
+  so, package.json is a part of this ecosystem.
+  Node doesnt depend on npm(Package.json) until and unless it uses local(custom) or Built-in core modules.
+Package.json(A manifest file for Node project) deep dive
+ It contains script(short cut for commands), list of dependancies or devdependancies, metadata & configs.
+ for any project either `npm init`(An interactive interface with Qns will appear) or `npm init -y`(flag to ignore most Qns & get default config)
+
+ devdependancies vs dependancies
+    
+    | Type                | Purpose                                                      | Example                           |
+    | ------------------- | ------------------------------------------------------------ | --------------------------------- |
+    | **dependencies**    | Needed in production (your app won’t run without them).      | ``express``, ``react``, ``axios`` |
+    | **devDependencies** | Only needed during development (testing, building, linting). | ``nodemon``, ``jest``, ``eslint`` |
+     npm install --save-dev nodemon jest eslint
+     npm install express
+ Scripts 
+    "start": "node index.js" → Run app with Node.
+      npm start   # special case, no "run" needed
+    "dev": "nodemon index.js" → Auto‑restart server on file changes.
+      npm run dev
+    "test": "jest"
+      npm run test
+ Structure
+    {
+        "name": "Omnieux", // Doesn't need to be same as folder name
+        "version": "1.0.0",
+        "description": "AI Gateway",
+        "main": "index.js", // Required when you publish your package
+        "scripts": {
+            "start": "node index.js",
+            "dev": "nodemon index.js",
+            "test": "jest"
+        },
+        "author": "Rehaan",
+        "license": "MIT",
+        "dependencies": {
+            "express": "^4.18.2" // npm follow semantic versioning(Major (X): breaking changes|Minor (Y): new features|Patch (Z): bug fixes) , it allows minor and patch updates. 
+        },
+        "devDependencies": {
+            "nodemon": "~3.0.1", // Just allows patch updates.
+            "jest": "^29.7.0"
+        }
+    }
+ 
+ Package-lock.json is screenshot for every dependancy.
+
+ To use others project do `npm install`(If you publish your package named as "abc" then `npm install abc`) 
+npx Vs npm
+    | Feature          | **npm (Node Package Manager)**                  | **npx (Node Package Execute)**                          |
+    | ---------------- | ----------------------------------------------- | ------------------------------------------------------- |
+    | **Purpose**      | Installs, manages, and updates packages         | Executes packages directly                              |
+    | **Installation** | Comes with Node.js                              | Bundled with npm v5.2+                                  |
+    | **Usage**        | ``npm ``install ``<package>`` → adds to project | ``npx ``<package>`` → runs package instantly            |
+    | **Persistence**  | Packages stay in ``node_modules`` or globally   | Runs temporarily, doesn’t keep package unless specified |
+    | **Execution**    | Needs local/global install before running       | Can run without prior install                           |
+    | **Best For**     | Managing long-term dependencies                 | One-off commands, generators, CLIs                      |    
