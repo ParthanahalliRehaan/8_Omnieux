@@ -1,0 +1,12 @@
+{
+  "name": "8_omnieux",
+  "version": "1.0.0",
+  "description": "A production-grade AI Gateway that routes LLM requests, manages API keys, enforces rate limits, caches responses, tracks token usage, and fails over between providers — all exposed through a clean Swagger UI.",
+  "repository": {
+    "type": "git",
+    "url": "git@github-not-account:ParthanahalliRehaan/8_Omnieux.git"
+  },
+  "author": "ParthanahalliRehaan",
+  "license": "MIT",
+  "type": "module"
+}
