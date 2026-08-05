@@ -1,0 +1,42 @@
+1. What does semantic versioning means?
+    Semantic versioning (often called SemVer) is a code numbering system that uses three digits—Major, Minor, and Patch (written as )—to show the type of changes inside a software update. [1, 2, 3]  
+    The Three Parts of a Version Number 
+
+    • Major (): Changes here mean old code might break because the update is not compatible with past versions. 
+    • Minor (): Changes here mean new features were added, but everything still works safely with older versions. 
+    • Patch (): Changes here mean small bug fixes were made, and it is totally safe to update. [2, 4, 5, 6]  
+
+    Why It Helps 
+
+    • Clear Risk: You know right away if an update will break your app. 
+    • Easy Sharing: Teams can share code libraries without guessing what changed. [3, 7]  
+
+2. Why .env.example not .env?
+    - 🔑 Why `.env.example` instead of `.env`
+    - **`.env`**  
+    - This file contains **actual secrets and environment-specific values** (like API keys, database passwords, etc.).  
+    - It should **never** be committed to version control (GitHub, GitLab, etc.) because it exposes sensitive information.  
+    - Each developer or deployment environment maintains their own `.env` locally.
+
+    - **`.env.example`**  
+    - This is a **template file** that shows the structure and required variables without exposing real secrets.  
+    - It usually contains placeholder values (e.g., `API_KEY=your_api_key_here`).  
+    - It **is committed** to version control so that new developers or deployments know what variables they need to set up.  
+    - Acts like documentation for environment configuration.
+
+    - 📂 Typical Workflow
+        1. Project includes `.env.example` with placeholders.  
+        2. Developer copies it:  
+        ```bash
+        cp .env.example .env
+        ```  
+        3. Developer fills in real values in `.env`.  
+        4. `.env` stays private (ignored via `.gitignore`), while `.env.example` remains public as a guide.
+
+    -- ⚖️ Summary
+    - `.env` → private, real secrets, not shared.  
+    - `.env.example` → public template, safe to share, helps onboarding.
+
+    👉 In short: `.env.example` exists so teams can collaborate safely without leaking sensitive data. 
+
+3. '' 

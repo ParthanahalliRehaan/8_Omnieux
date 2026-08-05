@@ -253,7 +253,7 @@ omnieux/
 
 1. **Node.js 22 LTS Overview**
    - Read: https://nodejs.org/docs/latest-v22.x/api/
-   - Read only the "About this Documentation" and "Usage and example" sections. Stop before individual module APIs.
+   - Read only the "About this Documentation" and "Usage and example" sections. Stop before individual module APIs.(This just tells about running a server thats all, berii simple!)
 
 2. **TypeScript Fundamentals**
    - Read: https://www.typescriptlang.org/docs/handbook/2/basic-types.html
