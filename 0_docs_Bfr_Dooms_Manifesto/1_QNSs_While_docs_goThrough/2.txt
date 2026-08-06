@@ -41,3 +41,170 @@
     | `typescript` | Compiler (transpiles TS → JS) | `npx tsc file.ts` |
     | `tsx` | Runtime (executes TS directly) | `npx tsx file.ts` |
     | `node` | Runs plain JS | `node file.js` |
+2. Hono Vs Node Vs Express?
+    ### 🔹 Node.js (native HTTP server)
+    ```js
+    // ES6 module import
+    import { createServer } from 'http';
+
+    const server = createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello Node.js!');
+    });
+
+    server.listen(3000);
+    ```
+    - Parameters: `(req, res)`
+    - You manually handle headers and response.
+
+    ---
+
+    ### 🔹 Express.js
+    ```js
+    import express from 'express';
+    const app = express();
+
+    app.get('/', (req, res) => {
+    res.send('Hello Express!');
+    });
+
+    app.listen(3000);
+    ```
+    - Parameters: `(req, res)`
+    - Express adds helpers like `res.send()`, `res.json()`, etc.
+
+    ---
+
+    ### 🔹 Hono
+    ```js
+    import { Hono } from 'hono';
+    const app = new Hono();
+
+    app.get('/', (c) => c.text('Hello Hono!'));
+
+    export default app;
+    ```
+    - Parameter: `(c)` → the **Context object**
+    - `c` wraps both request and response, with helpers like:
+    - `c.req` → request
+    - `c.res` → response
+    - `c.text()`, `c.json()`, `c.html()` → send responses easily
+
+    ---
+
+    ### ⚡ Key Difference
+    | Framework | Callback Signature | Response Method |
+    |-----------|-------------------|-----------------|
+    | Node.js   | `(req, res)`      | `res.end()` |
+    | Express   | `(req, res)`      | `res.send()` |
+    | Hono      | `(ctx)` or `(c)`  | `c.text()`, `c.json()` |
+
+    So in short:
+    - **Node.js** → low-level `(req, res)`
+    - **Express** → middleware-driven `(req, res)`
+    - **Hono** → modern `(ctx)` with built-in helpers
+3. Curl, Linter?
+    ## 🌐 What is `curl` and how to use it
+    `curl` is a command-line tool used to transfer data to or from a server using various protocols (HTTP, HTTPS, FTP, etc.). It’s extremely common for testing APIs and downloading files.
+
+    ### Basic Usage Examples:
+    - **Fetch a webpage:**
+    ```bash
+    curl https://example.com
+    ```
+    This prints the HTML of the page.
+
+    - **Download a file:**
+    ```bash
+    curl -o file.txt https://example.com/file.txt
+    ```
+    Saves the file as `file.txt`.
+
+    - **Send a POST request with data:**
+    ```bash
+    curl -X POST https://api.example.com/data -d "name=Rehaan&age=25"
+    ```
+    Sends form data to the server.
+
+    - **Send JSON data with headers:**
+    ```bash
+    curl -X POST https://api.example.com/data \
+        -H "Content-Type: application/json" \
+        -d '{"name":"Rehaan","age":25}'
+    ```
+
+    - **Include authentication:**
+    ```bash
+    curl -u username:password https://api.example.com/secure
+    ```
+
+    ---
+
+    ## 🧹 What is a Linter?
+    A **linter** is a tool that analyzes source code to flag programming errors, bugs, stylistic issues, or suspicious constructs. The term comes from the original `lint` program for C code.
+
+    ### Key Points:
+    - **Purpose:** Catch mistakes early before running the code.
+    - **Examples:** ESLint (JavaScript/TypeScript), Pylint (Python), RuboCop (Ruby).
+    - **Checks for:**
+    - Syntax errors
+    - Unused variables
+    - Code style consistency (indentation, spacing, naming)
+    - Potential bugs (e.g., undefined variables)
+
+    ### Why it matters:
+    - Improves **code quality**.
+    - Enforces **team-wide standards**.
+    - Saves time by catching issues before runtime.
+
+    ---
+
+    👉 In short:  
+    - **`curl`** is your Swiss army knife for talking to servers.  
+    - A **linter** is your code’s spellchecker, keeping it clean and error-free.  
+4. What is esbuild and eslint?
+    **Esbuild is a super-fast JavaScript bundler and minifier, while ESLint is a tool that analyzes your code to enforce consistent style and catch errors. Together, they are often used in modern web development to build efficient applications and maintain high code quality.**
+
+    ---
+
+    ## 🔧 Esbuild
+    - **Purpose:** A **JavaScript bundler and minifier** that compiles and packages code for deployment.
+    - **Key Features:**
+    - **Speed:** 10–100x faster than traditional bundlers like Webpack or Rollup.
+    - **Bundling:** Combines multiple files (JavaScript, TypeScript, CSS) into optimized output.
+    - **Minification:** Reduces file size for faster load times.
+    - **Simple setup:** Minimal configuration compared to other bundlers.
+    - **Use Cases:**
+    - Building React, Vue, or Node.js projects.
+    - Compiling TypeScript into JavaScript.
+    - Optimizing production builds for performance.  [xjavascript.com](https://www.xjavascript.com/blog/using-tailwind-css-with-esbuild-the-process/)  [johnretsas.github.io](https://johnretsas.github.io/blog/node-ts-boilerplate/)
+
+    ---
+
+    ## 🧹 ESLint
+    - **Purpose:** A **linting tool** for JavaScript and TypeScript that enforces coding standards and detects problems.
+    - **Key Features:**
+    - **Error detection:** Finds syntax errors, unused variables, and potential bugs.
+    - **Style enforcement:** Ensures consistent formatting (indentation, spacing, naming).
+    - **Custom rules:** Developers can configure rules to match project guidelines.
+    - **Integration:** Works with editors (VS Code, WebStorm) and CI/CD pipelines.
+    - **Use Cases:**
+    - Maintaining clean, readable code.
+    - Preventing bugs before runtime.
+    - Enforcing team-wide coding conventions.  [johnretsas.github.io](https://johnretsas.github.io/blog/node-ts-boilerplate/)  [Github](https://github.com/rbnts/esbuild-plugin-eslint)
+
+    ---
+
+    ## ⚖️ Comparison Table
+
+    | Tool      | Type                  | Main Role                         | Strengths                          | Typical Use Case |
+    |-----------|-----------------------|-----------------------------------|------------------------------------|------------------|
+    | **Esbuild** | Bundler/Minifier      | Compiles & optimizes code         | Extremely fast, simple config       | Building apps, bundling TypeScript |
+    | **ESLint**  | Linter (Code Analyzer) | Enforces style & catches errors   | Highly configurable, prevents bugs  | Code quality checks, CI/CD pipelines |
+
+    ---
+
+    ## 🚀 Why They’re Used Together
+    - **Esbuild** handles the **performance side** (fast builds, optimized bundles).
+    - **ESLint** ensures **code quality** (no sloppy mistakes, consistent style).
+    - Combined, they give developers a **robust workflow**: fast builds + reliable, maintainable code.  [xjavascript.com](https://www.xjavascript.com/blog/using-tailwind-css-with-esbuild-the-process/)

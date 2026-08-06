@@ -1,12 +1,23 @@
 {
   "name": "8_omnieux",
   "version": "1.0.0",
-  "description": "A production-grade AI Router that routes LLM requests, manages APIs, enforces rate limits, caches responses, tracks token usage, and fails over between providers — all exposed through a clean Swagger UI.",
+  "description": "A Production Grade AI Router that Routes LLM Requests, Manages APIs, enforces Ratelimits, Caches responses, Tracks Token usage and Fails over between Providers!",
   "repository": {
     "type": "git",
     "url": "git@github-not-account:ParthanahalliRehaan/8_Omnieux.git"
   },
+  "scripts": {
+    "dev":"tsx src/index.ts"
+  },
   "author": "ParthanahalliRehaan",
   "license": "MIT",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@hono/node-server": "^2.1.0",
+    "hono": "^4.13.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.9",
+    "typescript": "^7.0.2"
+  }
 }
