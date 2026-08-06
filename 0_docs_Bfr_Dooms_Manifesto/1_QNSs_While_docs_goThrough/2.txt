@@ -1,0 +1,43 @@
+1. what is tsx?
+    ### 🌐 Why install **tsx** when using TypeScript?
+    - **TypeScript itself** (`typescript` package) only provides the compiler (`tsc`) that converts `.ts` files into plain JavaScript. It doesn’t run them directly.
+    - **tsx** is a runtime tool that lets you execute `.ts` and `.tsx` files without manually compiling them first.  
+    - It’s similar to `node` for JavaScript, but it understands TypeScript syntax.  
+    - It uses **esbuild** under the hood for super-fast transpilation.  
+    - This is especially handy during development, because you can run TypeScript files directly without waiting for compilation.
+
+    So, installing `tsx` is about convenience: it saves you from running `tsc` every time before executing your code.
+
+    ---
+
+    ### ▶️ How to run a TypeScript file
+    For JavaScript:
+    ```bash
+    node file.js
+    ```
+
+    For TypeScript, you have two main options:
+
+    1. **Using tsx (recommended for dev):**
+    ```bash
+    npx tsx file.ts
+    ```
+    This runs the file directly, no compilation step needed.
+
+    2. **Using the TypeScript compiler (classic way):**
+    ```bash
+    npx tsc file.ts
+    node file.js
+    ```
+    - Here, `tsc` compiles `file.ts` into `file.js`.
+    - Then you run the generated JavaScript with Node.
+
+    ---
+
+    ### ⚡ Quick comparison
+
+    | Tool | Purpose | Command |
+    |------|----------|---------|
+    | `typescript` | Compiler (transpiles TS → JS) | `npx tsc file.ts` |
+    | `tsx` | Runtime (executes TS directly) | `npx tsx file.ts` |
+    | `node` | Runs plain JS | `node file.js` |

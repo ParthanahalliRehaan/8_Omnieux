@@ -38,5 +38,3 @@
     - `.env.example` → public template, safe to share, helps onboarding.
 
     👉 In short: `.env.example` exists so teams can collaborate safely without leaking sensitive data. 
-
-3. '' 
